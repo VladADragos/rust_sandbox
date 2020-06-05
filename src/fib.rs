@@ -1,6 +1,9 @@
+#![allow(dead_code)]
+
 use std::collections::HashMap;
-use std::thread::sleep;
-use std::time::{Duration, Instant};
+// use std::thread::sleep;
+use std::time::Instant;
+
 pub fn fib_rec(n: u64) -> u64 {
     if n == 0 {
         1
@@ -42,7 +45,7 @@ pub fn fib_test(fib_type: &str, len: u64, verbose: bool) {
         "2" => {
             for i in 0..len {
                 fib_rec(i);
-                if (verbose) {
+                if verbose {
                     print!("i:{} value: {}\n", i, fib_rec(i));
                     print!("time: {}\n", now.elapsed().as_millis());
                 }

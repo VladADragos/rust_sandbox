@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 pub fn fizzbuzz(n: u64) {
     for i in 1..n {
         print!("i: {}, ", i);
