@@ -3,8 +3,6 @@
 use rand;
 use std::fmt::Display;
 
-
-
 pub fn quick_sort<T: PartialOrd + Copy + Display>(array: &mut [T]) -> &mut [T] {
     sort(array, 0, array.len() - 1);
 
@@ -70,8 +68,8 @@ fn gen_array() -> [u32; 5000] {
 #[test]
 pub fn quick_sort_test() {
     println!("RUNNING QUICK SORT TEST");
-    use std::time::Instant;
     use super::is_sorted::is_sorted;
+    use std::time::Instant;
     // use utils::is_sorted;
     let mut arr = gen_array();
     let now = Instant::now();
@@ -81,4 +79,3 @@ pub fn quick_sort_test() {
     // assert!(arr.is_sorted());
     assert!(is_sorted(&arr));
 }
-
