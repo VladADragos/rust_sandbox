@@ -1,8 +1,4 @@
 #![allow(dead_code)]
-#[path = "utils.rs"]
-mod utils;
-use std::time::Instant;
-
 pub fn bubble_sort<T: PartialOrd>(slice: &mut [T]) {
     let mut i = 1;
 
@@ -29,11 +25,13 @@ fn gen_array() -> [u32; 5000] {
 }
 
 #[test]
-pub fn sort_test() {
+fn bubble_sort_test() {
+    use super::is_sorted::is_sorted;
+    use std::time::Instant;
+    println!("RUNNING BUBBLE SORT TEST");
     let mut arr = gen_array();
     let now = Instant::now();
     bubble_sort(&mut arr);
     println!("time elapsed {}", now.elapsed().as_micros());
-    drop(now);
-    assert!(utils::is_sorted(&arr));
+    assert!(is_sorted(&arr));
 }

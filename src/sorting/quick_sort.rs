@@ -1,12 +1,10 @@
-// enum
-#[path = "utils.rs"]
-mod utils;
+#![allow(dead_code)]
 
 use rand;
-use std::fmt::{Debug, Display};
-use std::time::Instant;
-use std::{thread, time};
-// mod bubble_sort;
+use std::fmt::Display;
+
+
+
 pub fn quick_sort<T: PartialOrd + Copy + Display>(array: &mut [T]) -> &mut [T] {
     sort(array, 0, array.len() - 1);
 
@@ -65,20 +63,22 @@ fn partition_test() {
 }
 
 fn gen_array() -> [u32; 5000] {
-    let mut test_arr: [u32; 5000] = [0; 5000];
-
-    for i in 0..4999 {
-        test_arr[i] = rand::random::<u32>();
-    }
+    let test_arr: [u32; 5000] = [rand::random::<u32>(); 5000];
     return test_arr;
 }
 
 #[test]
-pub fn sort_test() {
+pub fn quick_sort_test() {
+    println!("RUNNING QUICK SORT TEST");
+    use std::time::Instant;
+    use super::is_sorted::is_sorted;
+    // use utils::is_sorted;
     let mut arr = gen_array();
     let now = Instant::now();
     quick_sort(&mut arr);
     println!("time elapsed {}", now.elapsed().as_micros());
-    drop(now);
-    assert!(true);
+    // drop(now);
+    // assert!(arr.is_sorted());
+    assert!(is_sorted(&arr));
 }
+
